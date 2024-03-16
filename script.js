@@ -8,9 +8,9 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = prompt("Rock, Paper or Scissors?");
+  playerSelection = "";
 
-  let hand = playerSelection.toLowerCase();
+  let hand = playerSelection.toString().toLowerCase();
   computerSelection = getComputerChoice();
   console.log(
     `Computer selects ${computerSelection} player selects ${playerSelection}`
@@ -54,11 +54,29 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function playGame(n, func) {
-  for (let i = 0; i < n; i++) {
-    func = playRound();
-    console.log(`Player: ${playerCount} Computer: ${computerCount}`);
-  }
-}
+const rockBtn = document.querySelector("#rock-btn");
+computerSelection = getComputerChoice();
+rockBtn.addEventListener("click", function () {
+  playRound("Rock", computerSelection);
+});
 
-playGame(5, playRound);
+const paperBtn = document.querySelector("#paper-btn");
+computerSelection = getComputerChoice();
+paperBtn.addEventListener("click", function () {
+  playRound("Paper", computerSelection);
+});
+const scissorsBtn = document.querySelector("#scissors-btn");
+computerSelection = getComputerChoice();
+scissorsBtn.addEventListener("click", function () {
+  playRound("Scissors", computerSelection);
+});
+
+// function playGame(n, func) {
+//   for (let i = 0; i < n; i++) {
+//     func = playRound();
+//     console.log(`Player: ${playerCount} Computer: ${computerCount}`);
+//   }
+// }
+
+// playGame(5, playRound);
+playRound();
