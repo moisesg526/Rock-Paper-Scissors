@@ -8,44 +8,41 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  playerSelection = "";
-
-  let hand = playerSelection.toString().toLowerCase();
   computerSelection = getComputerChoice();
   console.log(
     `Computer selects ${computerSelection} player selects ${playerSelection}`
   );
-  if (hand === "rock" && computerSelection === "Scissors") {
+  if (playerSelection === "rock" && computerSelection === "Scissors") {
     console.log("You win! Rock beats Scissors.");
     playerCount++;
     return "You win! Rock beats Scissors.";
-  } else if (hand === "rock" && computerSelection === "Paper") {
+  } else if (playerSelection === "rock" && computerSelection === "Paper") {
     console.log("You lose! Paper beats Rock.");
     computerCount++;
     return "You lose! Paper beats Rock.";
-  } else if (hand === "rock" && computerSelection === "Rock") {
+  } else if (playerSelection === "rock" && computerSelection === "Rock") {
     console.log("Rock, Rock. It's a tie. Try again.");
     return "Rock, Rock. It's a tie. Try again.";
-  } else if (hand === "paper" && computerSelection === "Rock") {
+  } else if (playerSelection === "paper" && computerSelection === "Rock") {
     console.log("You win! Paper beats Rock.");
     playerCount++;
     return "You win! Paper beats Rock.";
-  } else if (hand === "paper" && computerSelection === "Scissors") {
+  } else if (playerSelection === "paper" && computerSelection === "Scissors") {
     console.log("You lose! Scissors beats Paper");
     computerCount++;
     return "You lose! Scissors beats Paper";
-  } else if (hand === "paper" && computerSelection === "Paper") {
+  } else if (playerSelection === "paper" && computerSelection === "Paper") {
     console.log("Paper, Paper. It's a Tie! Try again.");
     return "Paper, Paper. It's a Tie! Try again.";
-  } else if (hand === "scissors" && computerSelection === "Paper") {
+  } else if (playerSelection === "scissors" && computerSelection === "Paper") {
     console.log("You win! Scissors beats Paper.");
     playerCount++;
     return "You win! Scissors beats Paper.";
-  } else if (hand === "scissors" && computerSelection === "Rock") {
+  } else if (playerSelection === "scissors" && computerSelection === "Rock") {
     console.log("You lose! Rock beats Scissors.");
     computerCount++;
     return "You lose! Rock beats Scissors.";
-  } else if (hand === "scissors" && computerSelection === "Scissors") {
+  } else if (playerSelection === "scissors" && computerSelection === "Scissors") {
     console.log("Scissors, Scissors. It's a tie. Try again.");
     return "Scissors, Scissors. It's a tie. Try again.";
   } else {
@@ -55,20 +52,17 @@ function playRound(playerSelection, computerSelection) {
 }
 
 const rockBtn = document.querySelector("#rock-btn");
-computerSelection = getComputerChoice();
-rockBtn.addEventListener("click", function () {
-  playRound("Rock", computerSelection);
+rockBtn.addEventListener("click", function() {
+  playRound("rock", computerSelection);
 });
 
 const paperBtn = document.querySelector("#paper-btn");
-computerSelection = getComputerChoice();
-paperBtn.addEventListener("click", function () {
-  playRound("Paper", computerSelection);
+paperBtn.addEventListener("click", function() {
+  playRound("paper", computerSelection);
 });
 const scissorsBtn = document.querySelector("#scissors-btn");
-computerSelection = getComputerChoice();
-scissorsBtn.addEventListener("click", function () {
-  playRound("Scissors", computerSelection);
+scissorsBtn.addEventListener("click", function() {
+  playRound("scissors", computerSelection);
 });
 
 // function playGame(n, func) {
