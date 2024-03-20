@@ -1,5 +1,6 @@
 let playerCount = 0;
 let computerCount = 0;
+
 function getComputerChoice() {
   let game = ["Rock", "Paper", "Scissors"];
   let pick = game[Math.floor(Math.random() * 3)];
@@ -8,6 +9,8 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+
   computerSelection = getComputerChoice();
   console.log(
     `Computer selects ${computerSelection} player selects ${playerSelection}`
@@ -42,7 +45,10 @@ function playRound(playerSelection, computerSelection) {
     console.log("You lose! Rock beats Scissors.");
     computerCount++;
     return "You lose! Rock beats Scissors.";
-  } else if (playerSelection === "scissors" && computerSelection === "Scissors") {
+  } else if (
+    playerSelection === "scissors" &&
+    computerSelection === "Scissors"
+  ) {
     console.log("Scissors, Scissors. It's a tie. Try again.");
     return "Scissors, Scissors. It's a tie. Try again.";
   } else {
@@ -51,26 +57,22 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    playRound();
+    console.log(`Player: ${playerCount} Computer: ${computerCount}`);
+  }
+}
+
+playGame();
+
+// Buttons With Event Listeners
+
 const rockBtn = document.querySelector("#rock-btn");
-rockBtn.addEventListener("click", function() {
-  playRound("rock", computerSelection);
-});
+rockBtn.addEventListener("click", playRound);
 
 const paperBtn = document.querySelector("#paper-btn");
-paperBtn.addEventListener("click", function() {
-  playRound("paper", computerSelection);
-});
+paperBtn.addEventListener("click", playRound);
+
 const scissorsBtn = document.querySelector("#scissors-btn");
-scissorsBtn.addEventListener("click", function() {
-  playRound("scissors", computerSelection);
-});
-
-// function playGame(n, func) {
-//   for (let i = 0; i < n; i++) {
-//     func = playRound();
-//     console.log(`Player: ${playerCount} Computer: ${computerCount}`);
-//   }
-// }
-
-// playGame(5, playRound);
-playRound();
+scissorsBtn.addEventListener("click", playRound);
