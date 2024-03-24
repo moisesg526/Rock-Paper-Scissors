@@ -1,3 +1,4 @@
+const letsPlay = document.querySelector(".letsPlay");
 const rockBtn = document.querySelector("#rock-btn");
 const paperBtn = document.querySelector("#paper-btn");
 const scissorsBtn = document.querySelector("#scissors-btn");
@@ -6,21 +7,23 @@ const computerResults = document.querySelector(".computerResults");
 const gamePicks = document.querySelector(".gamePicks");
 const points = document.querySelector(".points");
 const winner = document.querySelector(".winner");
-const count = document.querySelector(".count");
 
 let playerCount = 0;
 let computerCount = 0;
 let playerSelection;
 
-// function playGame() {
-//   if (playerCount === 0 && computerCount === 0) {
-//     gamePicks.textContent = "Please make your choice.";
-//   } else if (playerCount < "5" || computerCount < "5") {
-//     points.textContent = `Player: ${playerCount} Computer: ${computerCount}`;
-//   } else {
-//     return (points.textContent = `Final results are Player: ${playerCount} Computer: ${computerCount}`);
-//   }
-// }
+function playGame() {
+  if (playerCount === 0 && computerCount === 0) {
+    letsPlay.textContent = "Please make your choice.";
+  }
+  if (playerCount < "5" || computerCount < "5") {
+    points.textContent = `Player: ${playerCount} Computer: ${computerCount}`;
+  }
+  if (playerCount === 5 || computerCount === 5) {
+    return (points.textContent = `Final results are Player: ${playerCount} Computer: ${computerCount}`);
+  }
+}
+playGame();
 
 function playRound(playerSelection, computerSelection) {
   console.log(`Player selects ${playerSelection}`);
@@ -51,6 +54,8 @@ function playRound(playerSelection, computerSelection) {
     gamePicks.textContent = "You lose! Scissors beats Paper";
     computerCount += 1;
   } else if (playerSelection === "Paper" && computerSelection === "Paper") {
+    playerResults.textContent = `Player hand is ${playerSelection}`;
+    computerResults.textContent = `Computer hand is ${computerSelection}`;
     gamePicks.textContent = "Paper, Paper. It's a Tie! Try again.";
   } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
     playerResults.textContent = `Player hand is ${playerSelection}`;
@@ -70,7 +75,7 @@ function playRound(playerSelection, computerSelection) {
     computerResults.textContent = `Computer hand is ${computerSelection}`;
     gamePicks.textContent = "Scissors, Scissors. It's a tie. Try again.";
   }
-  count.textContent = `Player count: ${playerCount} Computer count ${computerCount}`;
+  playGame();
 }
 
 function selections(e) {
